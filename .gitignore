@@ -1,0 +1,7 @@
+.DS_Store
+.serverless
+__test__
+coverage
+node_modules
+npm-debug.log
+yarn.lock
