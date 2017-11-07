@@ -22,9 +22,21 @@ export function getAuthorById(id) {
     Key: {
       id,
     },
+    AttributesToGet: [
+      'id',
+      'first_name',
+      'last_name',
+    ],
   };
-
-  return db.get(params);
+  console.log(params);
+  return db.get(params, (err, data) => {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log(data);
+      return data;
+    }
+  })
 }
 
 export function createAuthor(args) {

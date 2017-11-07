@@ -9,7 +9,8 @@ export function getPosts() {
     AttributesToGet: [
       'id',
       'title',
-      'authors',
+      'createdAt',
+      'author',
       'body',
     ],
   };
@@ -31,7 +32,7 @@ export function getPostById(id) {
 export function getPostsByAuthor(authorId) {
   const params = {
     TableName,
-    FilterExpression: 'author = :authort_id',
+    FilterExpression: 'author = :author_id',
     ExpressionAttributeValues: { ':author_id': authorId },
   };
 
@@ -43,6 +44,7 @@ export function createPost(args) {
     TableName,
     Item: {
       id: uuid(),
+      createdAt: (new Date()).toString(),
       title: args.title,
       author: args.author,
       body: args.body,

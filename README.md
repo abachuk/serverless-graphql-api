@@ -5,7 +5,6 @@ Inspired by https://github.com/boazdejong/serverless-graphql-api
 
 # Serverless GraphQL API using Lambda and DynamoDB
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
-[![Build Status](https://travis-ci.org/boazdejong/serverless-graphql-api.svg?branch=master)](https://travis-ci.org/boazdejong/serverless-graphql-api)
 
 GraphQL Lambda Server using [graphql-server-lambda](https://github.com/apollographql/graphql-server/tree/master/packages/graphql-server-lambda) from [Apollo](http://dev.apollodata.com/).
 
@@ -15,13 +14,18 @@ GraphQL Lambda Server using [graphql-server-lambda](https://github.com/apollogra
 
 
 ## Setup
-Clone the repository and install the packages.
-
-```
-git clone https://github.com/abachuk/serverless-graphql-api
-cd serverless-graphql-api
-npm install
-```
+1. Install serverless `npm install -g serverless`
+2. Configure AWS provider
+  a. Login to AWS console
+  b. Navigate to IAM
+  c. Create new user (or use existing one). Get access key and secret key
+  d. Navigate back to your local terminal `serverless config credentials --provider aws --key 1234 --secret 5678 --profile serverless-demo`
+3. Clone the repository and install the packages.
+  ```
+  git clone https://github.com/abachuk/serverless-graphql-api
+  cd serverless-graphql-api
+  npm install
+  ```
 
 ## Deploy
 Run the `deploy` script to create the Lambda Function and API Gateway for GraphQL. This also creates two DynamoDB tables named `authors` and `posts`
