@@ -19,13 +19,19 @@ const schema = makeExecutableSchema({
 });
 
 exports.graphql = (event, context, callback) => {
+  /**
+    * event - { resource: {path: /graphql, headers: ..., body: '{query:{...}}'}}
+    * context - { done: (), fail: (), functionName: 'graphql-api-dev-graphql', memoryLimitInMB: '1024', invokeId: '...'}
+    * callback - (err, data) => {finish(err, data, waitToFinish)}
+  **/
+
   const callbackFilter = (error, output) => {
     const outputWithHeader = Object.assign({}, output, {
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
     });
-    console.log(error);
+    console.log('graphql handler error', error);
     callback(error, outputWithHeader);
   };
 

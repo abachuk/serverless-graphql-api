@@ -6,7 +6,7 @@ Inspired by https://github.com/boazdejong/serverless-graphql-api
 # Serverless GraphQL API using Lambda and DynamoDB
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
 
-GraphQL Lambda Server using [graphql-server-lambda](https://github.com/apollographql/graphql-server/tree/master/packages/graphql-server-lambda) from [Apollo](http://dev.apollodata.com/).
+GraphQL Lambda Server using [graphql-server-lambda](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-server-lambda) from [Apollo](http://dev.apollodata.com).
 
 [graphql-tools](https://github.com/apollographql/graphql-tools) and [merge-graphql-schemas](https://github.com/okgrow/merge-graphql-schemas) are used to generate the schema.
 
