@@ -18,8 +18,8 @@ export default `
     ): Author
     updateAuthor(
       id: ID!
-      first_name: String!
-      last_name: String!
+      first_name: String
+      last_name: String
     ): Author
     deleteAuthor(
       id: ID!

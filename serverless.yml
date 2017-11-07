@@ -9,11 +9,11 @@ custom:
   webpackIncludeModules: true
   serverless-offline:
     babelOptions:
-      presets: ["es2015", "stage-2"]
+      presets: ["env"]
 
 provider:
   name: aws
-  runtime: nodejs4.3
+  runtime: nodejs6.10
   iamRoleStatements:
     - Effect: Allow
       Action:

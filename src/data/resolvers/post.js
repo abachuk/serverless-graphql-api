@@ -12,7 +12,7 @@ export default {
     deletePost: (_, args) => dbPosts.deletePost(args),
   },
   Post: {
-    author: post => return dbAuthors.getAuthorById(post.author)
+    author: post => dbAuthors.getAuthorById(post.author)
     // createdAt: post => post.createdAt || 'no date'
   },
 };

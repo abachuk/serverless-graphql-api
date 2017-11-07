@@ -12,6 +12,7 @@ export function getPosts() {
       'createdAt',
       'author',
       'body',
+      'image'
     ],
   };
 
@@ -48,6 +49,7 @@ export function createPost(args) {
       title: args.title,
       author: args.author,
       body: args.body,
+      image: args.image
     },
   };
 
@@ -55,27 +57,27 @@ export function createPost(args) {
 }
 
 export function updatePost(args) {
-  const params = {
+  let params = {
     TableName: 'test_posts',
     Key: {
       id: args.id,
     },
-    ExpressionAttributeNames: {
-      '#post_body': 'body',
-    },
-    ExpressionAttributeValues: {
-      ':title': args.title,
-      ':author': args.author,
-      ':body': args.body,
-    },
-    UpdateExpression: 'SET title = :title, author = :author, #post_body = :body',
+    ExpressionAttributeValues: {},
+    UpdateExpression: 'SET ',
     ReturnValues: 'ALL_NEW',
   };
 
+  for (const propKey in args) {
+    if(propKey !== 'id'){
+      params.ExpressionAttributeValues[`:${propKey}`] = args[propKey];
+      params.UpdateExpression += `${propKey} = :${propKey}, `;
+    }
+  };
+  params.UpdateExpression = params.UpdateExpression.slice(0, -2); //removing last comma and space
   return db.updateItem(params, args);
 }
 
-export function deletePosts(args) {
+export function deletePost(args) {
   const params = {
     TableName,
     Key: {

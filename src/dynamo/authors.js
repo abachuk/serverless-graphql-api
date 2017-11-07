@@ -28,12 +28,10 @@ export function getAuthorById(id) {
       'last_name',
     ],
   };
-  console.log(params);
   return db.get(params, (err, data) => {
     if(err) {
-      console.log(err);
+      console.log('getAuthorById ERROR', err);
     } else {
-      console.log(data);
       return data;
     }
   })
@@ -58,14 +56,19 @@ export function updateAuthor(args) {
     Key: {
       id: args.id,
     },
-    ExpressionAttributeValues: {
-      ':first_name': args.first_name,
-      ':last_name': args.last_name,
-    },
-    UpdateExpression: 'SET first_name = :first_name, last_name = :last_name',
+    ExpressionAttributeValues: {},
+    UpdateExpression: 'SET ',
     ReturnValues: 'ALL_NEW',
   };
 
+  for (const propKey in args) {
+    if(propKey !== 'id'){
+      params.ExpressionAttributeValues[`:${propKey}`] = args[propKey];
+      params.UpdateExpression += `${propKey} = :${propKey}, `;
+    }
+  };
+  params.UpdateExpression = params.UpdateExpression.slice(0, -2); //removing last comma and space
+  console.log('AUTHOR params ', params);
   return db.updateItem(params, args);
 }
 

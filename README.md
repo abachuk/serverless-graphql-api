@@ -43,7 +43,7 @@ brew cask install graphiql
 The following mutations are available in this example.
 
 #### createAuthor()
-Create an artist providing the first and last name as arguments. The id will be a generated uuid.
+Create an author providing the first and last name as arguments. The id will be a generated uuid.
 ```graphql
 mutation {
   createAuthor(first_name: "Agent", last_name: "Smith") {
@@ -53,10 +53,10 @@ mutation {
 ```
 
 #### createPost()
-Using the generated id from the artist you can create a song with the following mutation. Also provide a title and duration.
+Using the generated id from the author you can create a post with the following mutation. Also provide a title and duration.
 ```graphql
 mutation {
-  createSong(post: "34b236e0-0734-54e7-b2cd-45ue6a3b9071", title: "Whatever", body: "my long and very interesting post") {
+  createPost(post: "34b236e0-0734-54e7-b2cd-45ue6a3b9071", title: "Whatever", body: "my long and very interesting post") {
     id
   }
 }
@@ -65,7 +65,7 @@ mutation {
 #### updateAuthor()
 ```graphql
 mutation {
-  updateArtist(id: "34b236e0-0734-54e7-b2cd-45ue6a3b9071", first_name: "Agent", last_name: "Jones") {
+  updateAuthor(id: "34b236e0-0734-54e7-b2cd-45ue6a3b9071", first_name: "Agent", last_name: "Jones") {
     id
     first_name
     last_name
@@ -104,12 +104,12 @@ This query will return a result similar to this
 ```json
 {
   "data": {
-    "songs": [
+    "posts": [
       {
         "id": "w1a0a055-091b-11e7-bd09-1092f101s7c1",
         "title": "Whatever",
         "body": "super duper cool blog post",
-        "artist": {
+        "author": {
           "id": "99a746e0-0734-11e7-b2fd-45ae0a3b9074",
           "first_name": "Agent",
           "last_name": "Brown"

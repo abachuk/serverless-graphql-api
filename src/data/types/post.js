@@ -5,6 +5,7 @@ export default `
     createdAt: String
     author: Author
     body: String
+    image: String
   }
 
   type Query {
@@ -17,12 +18,14 @@ export default `
       title: String!
       author: String!
       body: String!
+      image: String
     ): Post
     updatePost(
       id: ID!
       title: String
       author: String
       body: String
+      image: String
     ): Post
     deletePost(
       id: ID!
