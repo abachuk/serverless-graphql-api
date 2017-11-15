@@ -10,6 +10,9 @@ import postType from './data/types/post';
 import authorResolver from './data/resolvers/author';
 import postResolver from './data/resolvers/post';
 
+//Auth
+import signupHandler from './auth/signup';
+
 const typeDefs = mergeTypes([authorType, postType]);
 const resolvers = mergeResolvers([authorResolver, postResolver]);
 
@@ -46,3 +49,13 @@ exports.record = (event, context, callback) => {
   });
   callback(null, `Successfully processed ${event.Records.length} records.`);
 };
+
+exports.signin = (event, context, callback) => {
+  console.log(event.body);
+  callback(null, 'Sign the user in');
+}
+
+exports.signup = (event, context, callback) => {
+  signupHandler(event.body);
+  callback(null, 'Sign the user UP');
+}

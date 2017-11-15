@@ -38,6 +38,20 @@ functions:
           path: graphql
           method: post
           cors: true
+  signup:
+    handler: src/handler.signup
+    events:
+      - http:
+          path: signup
+          method: post
+          cors: true
+  signin:
+    handler: src/handler.signin
+    events:
+      - http:
+          path: signin
+          method: post
+          cors: true
   record:
     handler: src/handler.record
     events:
