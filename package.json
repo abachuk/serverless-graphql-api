@@ -11,6 +11,7 @@
     "test:u": "npm-run-all lint:js copy babel jest:u"
   },
   "dependencies": {
+    "amazon-cognito-identity-js": "^1.29.0",
     "auth0": "^2.8.0",
     "aws-sdk": "^2.94.0",
     "babel-runtime": "^6.25.0",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "aws-sdk-mock": "^1.7.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.1",
